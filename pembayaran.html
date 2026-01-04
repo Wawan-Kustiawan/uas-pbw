@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran - Rompok Kayu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body {
+            background-color: #8D6E63; /* Cokelat Background Luar */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* Container Putih Besar */
+        .payment-container {
+            background-color: #fff;
+            width: 100%;
+            max-width: 1100px;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        /* Header (Tombol Kembali & Progress) */
+        .payment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .btn-back-pay {
+            background-color: #A67C52;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+        .btn-back-pay:hover { background-color: #8D6E63; }
+
+        .progress-bar {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #A67C52;
+            font-size: 0.9rem;
+        }
+        .progress-dot { width: 10px; height: 10px; background-color: #A67C52; border-radius: 50%; }
+        .progress-line { width: 50px; height: 2px; background-color: #ddd; }
+        .progress-dot.inactive { background-color: white; border: 2px solid #ddd; }
+
+        /* Grid Layout Utama (Kiri & Kanan) */
+        .payment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        /* Style Umum Kartu Krem */
+        .beige-card {
+            background-color: #FFF5EB; /* Warna Krem Lembut */
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        h3.section-title {
+            font-size: 1.1rem;
+            color: #8D6E63;
+            margin-bottom: 15px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .link-danger { color: #e74c3c; font-size: 0.8rem; text-decoration: none; cursor: pointer; }
+
+        /* ITEM PRODUK */
+        .product-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .product-item img {
+            width: 60px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .prod-info h4 { font-size: 0.95rem; color: #333; }
+        .prod-info span { font-size: 0.85rem; color: #888; }
+
+        /* KODE DISKON */
+        .discount-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .discount-label { font-weight: 700; color: #A67C52; text-transform: uppercase; white-space: nowrap;}
+        .discount-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            text-align: center;
+            font-weight: 600;
+            color: #555;
+            background: white;
+        }
+
+        /* TOTAL RINGKASAN */
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .summary-row.total {
+            font-weight: 700;
+            color: #333;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+
+        /* ALAMAT */
+        .address-text { font-size: 0.9rem; color: #555; margin-bottom: 15px; line-height: 1.6; }
+        .btn-edit-addr {
+            background: white; border: 1px solid #ddd; padding: 5px 15px;
+            border-radius: 20px; font-size: 0.8rem; cursor: pointer; color: #555;
+        }
+
+        /* METODE PEMBAYARAN (GRID LOGO) */
+        .bank-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .bank-card {
+            background: white;
+            border-radius: 8px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: 0.3s;
+            font-weight: 700;
+            color: #555;
+            font-size: 0.8rem;
+        }
+        .bank-card:hover, .bank-card.active {
+            border-color: #A67C52;
+            background-color: #fdf5e6;
+            color: #A67C52;
+        }
+        /* Simulasi Logo Bank dengan Teks */
+        .bank-logo { width: 100%; text-align:center; font-style:italic; }
+
+        /* TOMBOL BAYAR */
+        .btn-pay-now {
+            background-color: #A67C52;
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(166, 124, 82, 0.3);
+        }
+        .btn-pay-now:hover { background-color: #8D6E63; transform: translateY(-2px); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .payment-grid { grid-template-columns: 1fr; }
+            .payment-container { padding: 20px; }
+            .progress-bar { display: none; } /* Hide di HP biar rapi */
+        }
+    </style>
+</head>
+<body class="payment-body">
+
+    <div class="payment-container">
+        <div class="payment-header">
+            <a href="javascript:history.back()" class="btn-back-pay"><i class="fas fa-arrow-left"></i> Kembali</a>
+            
+            <div class="progress-bar">
+                <span style="font-weight:600;">Deskripsi Pembayaran</span>
+                <div class="progress-dot"></div>
+                <div class="progress-line"></div>
+                <div class="progress-dot inactive"></div>
+                <span>Review</span>
+            </div>
+        </div>
+
+        <div class="payment-grid">
+            <div class="left-col">
+                <div class="beige-card">
+                    <h3 class="section-title">Produk <span class="link-danger" onclick="hapusProduk()">Hapus Produk</span></h3>
+                    
+                    <div class="product-item" id="paymentProductItem">
+                        <img id="payImg" src="" alt="Produk">
+                        <div class="prod-info">
+                            <h4 id="payName">Nama Produk</h4>
+                            <span id="payVariant">Variant: Default</span> <br>
+                            <span>x1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="beige-card discount-wrapper">
+                    <span class="discount-label">KODE DISKON</span>
+                    <input type="text" class="discount-input" value="NEWYEAR2026" readonly>
+                </div>
+
+                <div class="beige-card">
+                    <h3 class="section-title">Total Pembayaran</h3>
+                    <div class="summary-row"><span>Subtotal</span> <span id="paySubtotal">Rp 0</span></div>
+                    <div class="summary-row" style="color: #27ae60;"><span>Discount</span> <span>- Rp 100.000</span></div>
+                    <div class="summary-row"><span>Pengiriman</span> <span>FREE</span></div>
+                    <div class="summary-row total"><span>Total</span> <span id="payTotalFinal">Rp 0</span></div>
+                </div>
+            </div>
+
+            <div class="right-col">
+                <div class="beige-card">
+                    <h3 class="section-title">Alamat Pengiriman</h3>
+                    <p class="address-text">
+                        Jl. Angkrek Situ No.19, RT02/RW01, Kec. Sumedang Utara, Kabupaten Sumedang, Jawa Barat 45323, No.HP 085559389296
+                    </p>
+                    <button class="btn-edit-addr">Edit Alamat</button>
+                </div>
+
+                <div class="beige-card">
+                    <h3 class="section-title">Checkout</h3>
+                    
+                    <div class="bank-grid">
+                        <div class="bank-card active" onclick="selectBank(this)"><i class="fas fa-university"></i> BRI</div>
+                        <div class="bank-card" onclick="selectBank(this)">mandiri</div>
+                        <div class="bank-card" onclick="selectBank(this)">BCA</div>
+                        <div class="bank-card" onclick="selectBank(this)">BNI</div>
+                        <div class="bank-card" onclick="selectBank(this)">BSI</div>
+                        <div class="bank-card" onclick="selectBank(this)">Panin</div>
+                    </div>
+
+                    <div class="summary-row total" style="border:none; margin-top:0;">
+                        <span>Total</span> <span id="payTotalButton">Rp 0</span>
+                    </div>
+
+                    <button class="btn-pay-now" onclick="processPayment()">Bayar Sekarang</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

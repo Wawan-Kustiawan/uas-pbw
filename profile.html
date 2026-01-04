@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Saya - Rompok Kayu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="profile-layout">
+        
+        <aside class="profile-sidebar">
+            <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Kembali</a>
+
+            <div class="profile-header">
+                <div class="profile-pic-wrapper">
+                    <img id="profileImg" src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Foto Profil">
+                    <label for="uploadFoto" class="edit-photo-overlay" id="editPhotoBtn" style="display: none;">
+                        <i class="fas fa-camera"></i>
+                    </label>
+                    <input type="file" id="uploadFoto" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                </div>
+
+                <h1 id="profileName" contenteditable="false">Wawan<br>Kustiawan</h1>
+                
+                <button id="btnEdit" class="btn-edit-profile" onclick="enableEditMode()">
+                    <i class="fas fa-pen"></i> Edit Profil
+                </button>
+                <button id="btnSave" class="btn-save-profile" onclick="saveProfile()" style="display: none;">
+                    <i class="fas fa-check"></i> Simpan
+                </button>
+            </div>
+
+            <nav class="profile-menu">
+                <a href="#" onclick="openModal('Pengaturan')"><i class="fas fa-cog"></i> Pengaturan</a>
+                <a href="#" onclick="openModal('Umpan Balik')"><i class="far fa-thumbs-up"></i> Umpan Balik</a>
+                <a href="#" onclick="openModal('Bantuan')"><i class="far fa-comment-dots"></i> Bantuan</a>
+                <a href="#" onclick="openModal('Tips')"><i class="fas fa-tasks"></i> Tips</a>
+                <a href="#" class="logout-link" onclick="confirmLogout(event)">
+                    <i class="fas fa-sign-out-alt"></i> Keluar
+                </a>
+            </nav>
+        </aside>
+
+        <main class="profile-content-area">
+            
+            <div class="info-section">
+                <div class="info-row"><span class="label">No. Handphone</span><span class="value" contenteditable="false" id="phone">08312897466</span></div>
+                <div class="info-row"><span class="label">Email</span><span class="value" contenteditable="false" id="email">Wawaw@Gmail.Com</span></div>
+                <div class="info-row"><span class="label">Alamat</span><span class="value" contenteditable="false" id="address">Sumedang</span></div>
+            </div>
+
+            <div class="order-history-section">
+                <h2>Riwayat Pesanan</h2>
+                
+                <div class="order-tabs">
+                    <button class="order-tab active" onclick="switchTab('diproses')">Diproses</button>
+                    <button class="order-tab" onclick="switchTab('dikirim')">Dikirim</button>
+                    <button class="order-tab" onclick="switchTab('pembatalan')">Pembatalan</button>
+                    <button class="order-tab" onclick="switchTab('selesai')">Selesai</button>
+                </div>
+
+                <div id="tab-diproses" class="order-content" style="display:block;">
+                    <div id="orderHistoryList">
+                        <div style="text-align:center; padding:30px; color:#aaa; font-style:italic;">
+                            Belum ada pesanan yang diproses.
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="tab-dikirim" class="order-content" style="display:none;">
+                    <div class="order-card-map">
+                        <div class="map-header">
+                            <p><strong>Kursi Gaming Kayu</strong></p>
+                            <span class="status-badge shipping">Dalam Perjalanan</span>
+                        </div>
+                        <div class="tracking-map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.672522774983!2d107.7656910741943!3d-6.932692267833215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c4a5c9603a9f%3A0x6c627f0d0696b99!2sGerbang%20Tol%20Cileunyi!5e0!3m2!1sid!2sid!4v1704336000000!5m2!1sid!2sid" width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            <div class="courier-info">
+                                <i class="fas fa-truck"></i> Posisi: Gerbang Tol Cileunyi
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="tab-pembatalan" class="order-content" style="display:none;">
+                    <div class="order-card cancel-theme">
+                        <div class="order-info">
+                            <p><strong>Rak Sepatu Gantung</strong></p>
+                            <span class="reason">Alasan: Ubah pesanan</span>
+                        </div>
+                        <span class="status-badge cancel">Dibatalkan</span>
+                    </div>
+                </div>
+                
+                <div id="tab-selesai" class="order-content" style="display:none;">
+                    <div class="order-card">
+                        <div class="order-info">
+                            <p><strong>Lemari Buku Jati</strong></p>
+                            <span class="date">Diterima: 20 Des 2025</span>
+                        </div>
+                        <div class="action-right">
+                            <span class="status-badge success">Selesai</span>
+                            <button class="btn-bukti" onclick="showProof()">Lihat Bukti</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-footer-note">
+                <p>*Pada Setiap Progres Anda Bis Langsung Melakukan Panggilan Via Telepon Atau Video Call<br>Apabila Tidak Cukup Puas Hanya Melihat Dari Progres Saja*</p>
+            </div>
+        </main>
+    </div>
+
+    <div id="genericModal" class="modal-overlay">
+        <div class="modal-box">
+            <h3 id="modalTitle">Judul</h3>
+            <div id="modalBody">Konten...</div>
+            <button class="modal-close" onclick="closeModal()">Tutup</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        // 1. GANTI TAB (Diproses, Dikirim, dll)
+        function switchTab(tabName) {
+            // Sembunyikan semua konten
+            const contents = document.querySelectorAll('.order-content');
+            contents.forEach(c => c.style.display = 'none');
+            
+            // Matikan style active di semua tombol
+            const tabs = document.querySelectorAll('.order-tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            // Munculkan konten yang dipilih
+            document.getElementById('tab-' + tabName).style.display = 'block';
+            
+            // Nyalakan style active di tombol yang diklik
+            event.currentTarget.classList.add('active');
+        }
+
+        // 2. LOGIKA EDIT PROFIL
+        function enableEditMode() {
+            document.getElementById('editPhotoBtn').style.display = 'flex';
+            document.getElementById('btnSave').style.display = 'inline-flex';
+            document.getElementById('btnEdit').style.display = 'none';
+
+            document.getElementById('profileName').contentEditable = "true";
+            document.getElementById('profileName').classList.add('editable-field');
+            document.getElementById('profileName').focus();
+
+            const fields = ['phone', 'email', 'address'];
+            fields.forEach(id => {
+                const el = document.getElementById(id);
+                el.contentEditable = "true";
+                el.classList.add('editable-field-line');
+            });
+        }
+
+        function saveProfile() {
+            document.getElementById('editPhotoBtn').style.display = 'none';
+            document.getElementById('btnSave').style.display = 'none';
+            document.getElementById('btnEdit').style.display = 'inline-flex';
+
+            document.getElementById('profileName').contentEditable = "false";
+            document.getElementById('profileName').classList.remove('editable-field');
+
+            const fields = ['phone', 'email', 'address'];
+            fields.forEach(id => {
+                const el = document.getElementById(id);
+                el.contentEditable = "false";
+                el.classList.remove('editable-field-line');
+            });
+
+            alert("Profil berhasil diperbarui!");
+        }
+
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function(){
+                const output = document.getElementById('profileImg');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+        // 3. LOGIKA MODAL
+        function openModal(menuName) {
+            const modal = document.getElementById('genericModal');
+            const title = document.getElementById('modalTitle');
+            const body = document.getElementById('modalBody');
+
+            modal.style.display = 'flex';
+            title.innerText = menuName;
+
+            if(menuName === 'Pengaturan') {
+                body.innerHTML = '<p>Ubah Kata Sandi</p><p>Notifikasi</p><p>Bahasa</p>';
+            } else if(menuName === 'Bantuan') {
+                body.innerHTML = '<p>Hubungi CS: 0812-3456-7890</p><p>Email: help@rompokkayu.com</p>';
+            } else if(menuName === 'Tips') {
+                body.innerHTML = '<p>1. Jangan letakkan furniture di tempat lembab.<br>2. Bersihkan debu secara rutin.</p>';
+            } else {
+                body.innerHTML = '<p>Fitur ini sedang dalam pengembangan.</p>';
+            }
+        }
+
+        function showProof() {
+            const modal = document.getElementById('genericModal');
+            document.getElementById('modalTitle').innerText = "Bukti Penerimaan";
+            document.getElementById('modalBody').innerHTML = '<img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" style="width:100%; border-radius:10px;"> <p style="margin-top:10px; text-align:center;">Diterima oleh: Wawan (Ybs)</p>';
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('genericModal').style.display = 'none';
+        }
+        
+    </script>
+</body>
+</html>

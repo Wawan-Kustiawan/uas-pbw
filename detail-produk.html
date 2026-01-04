@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Produk - Rompok Kayu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="top-bar container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration:none; color:inherit;">
+                    <i class="fas fa-couch"></i> Rompok Kayu
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Beranda</a>
+                <a href="index.html#kategori">Kategori</a>
+                <a href="index.html#blog">Blog</a>
+                <a href="index.html#about">Tentang Kami</a>
+            </nav>
+            <div class="user-actions">
+                <a href="#" class="icon-desktop"><i class="fas fa-search"></i></a>
+                <a href="#" class="icon-desktop"><i class="far fa-heart"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <section class="product-detail-section container">
+        <div class="detail-wrapper">
+            
+            <div class="detail-left">
+                <div class="main-image-box">
+                    <img id="mainImg" src="" alt="Produk">
+                </div>
+                
+                <h1 id="titleMobile" class="product-title-mobile">Memuat...</h1>
+
+                <div class="product-meta-table">
+                    <div class="meta-row">
+                        <span class="label">Kode</span>
+                        <span id="productCode" class="value">-</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="label">Stok</span>
+                        <span class="value"><i class="far fa-clock"></i> Pre-Order</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="label">Kategori</span>
+                        <span id="productCategory" class="value">-</span>
+                    </div>
+                </div>
+
+                <div class="share-section">
+                    <span>Bagikan ke:</span>
+                    <div class="share-icons">
+                        <a href="#" class="bg-blue"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="bg-cyan"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="bg-pink"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="bg-green"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="pre-order-badge-large">
+                    <i class="far fa-clock"></i> Pre-Order
+                </div>
+
+                <button id="btnPesanDetail" class="btn-action btn-sage" onclick="triggerBuyDetail()">Pesan Sekarang</button>
+
+<script>
+    function triggerBuyDetail() {
+        // Ambil data dari elemen halaman yang sedang aktif
+        const title = document.getElementById('titleDesktop').innerText;
+        const img = document.getElementById('mainImg').src;
+        // Simulasi harga Rp 500.000 (karena di database blm ada harga)
+        buyNow(title, img, 500000, "Standard"); 
+    }
+</script>
+                <div class="contact-mini">
+                    <span>Hubungi Kami</span>
+                    <div class="contact-icons">
+                        <a href="#" class="circle-icon"><i class="fas fa-phone-alt"></i></a>
+                        <a href="#" class="circle-icon"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-right">
+                <h1 id="titleDesktop" class="product-title-desktop">Memuat...</h1>
+
+                <div class="detail-tabs">
+                    <button class="tab-link active" onclick="openTab('deskripsi')">Deskripsi</button>
+                    <button class="tab-link" onclick="openTab('spesifikasi')">Spesifikasi</button>
+                    <button class="tab-link" onclick="openTab('diskusi')">Diskusi (3)</button>
+                </div>
+
+                <div class="tab-content-wrapper">
+                    
+                    <div id="content-deskripsi" class="tab-pane" style="display: block;">
+                        <div id="productDesc">
+                            </div>
+                        
+                        <div class="ordering-info">
+                            <br>
+                            <h4>CARA PEMESANAN DAN PEMBELIAN PRODUK</h4>
+                            <p>Silahkan Menghubungi Kontak Kami Yang Sudah Tertera Di Bagian Atas Dan Bawah Pada Website Kami Ini. METODE PEMESANAN ONLINE: Anda Dapat Melakukan Pemesanan Produk Mebel Rompok Kayu Yang Anda Inginkan Dari Dirgantara Furniture Menggunakan Cara Chatting Online Dengan Kami.</p>
+                            <ol>
+                                <li>Pilih Produk Mebel Yang Diinginkan Anda.</li>
+                                <li>Lakukan Transfer Down Payment 50%.</li>
+                                <li>Kami Akan Mengirimkan Invoice Sebagai Bukti.</li>
+                            </ol>
+                            <p class="closing">Terima Kasih & Salam Hormat<br><strong>Rompok Kayu</strong></p>
+                        </div>
+                    </div>
+
+                    <div id="content-spesifikasi" class="tab-pane" style="display: none;">
+                        <table class="specs-table">
+                            <tbody>
+                                <tr><td><strong>Bahan Utama</strong></td><td id="spec-material">-</td></tr>
+                                <tr><td><strong>Finishing</strong></td><td id="spec-finish">-</td></tr>
+                                <tr><td><strong>Dimensi</strong></td><td id="spec-dimensi">-</td></tr>
+                                <tr><td><strong>Garansi</strong></td><td>6 Bulan</td></tr>
+                                <tr><td><strong>Waktu Produksi</strong></td><td>14 - 21 Hari Kerja</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                   <div id="content-diskusi" class="tab-pane" style="display: none;">
+                        <div class="comment-section" id="commentList">
+                            <div class="comment-item">
+                                <div class="comment-avatar"><i class="fas fa-user"></i></div>
+                                <div class="comment-text">
+                                    <strong>Budi Santoso</strong> <span class="date">2 hari lalu</span>
+                                    <p>Apakah bisa custom ukuran lebih kecil?</p>
+                                    <div class="reply"><strong>Admin:</strong><p>Bisa kak, silahkan klik tombol Customize.</p></div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <button class="btn-action btn-brown" style="width: auto; padding: 10px 30px;" onclick="tambahPertanyaan()">Tulis Pertanyaan</button>
+                    </div>
+                </div>
+            </div> </div> </section>
+
+    <footer class="footer-final">
+        <div class="container">
+            <div class="footer-logo-wrapper">
+                <div class="footer-logo-content">
+                    <i class="fas fa-couch"></i>
+                    <div class="logo-text"><span>Rompok</span><span>Kayu</span></div>
+                </div>
+            </div>
+            <div class="footer-bottom-border"></div>
+            <p style="text-align:center; font-size:0.8rem; padding:20px 0;">&copy; 2026 Rompok Kayu. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

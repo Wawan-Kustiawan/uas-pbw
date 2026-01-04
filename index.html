@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rompok Kayu - Furniture Custom</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="top-bar container">
+            <div class="logo">
+                <i class="fas fa-couch"></i> Rompok Kayu
+            </div>
+            
+            <nav class="nav-links">
+                <a href="#home">Beranda</a>
+                <a href="#kategori">Kategori</a>
+                <a href="#shop">Produk</a>
+                <a href="#blog">Blog</a>
+                <a href="tentang-kami.html">Tentang Kami</a>
+                <a href="custom.html" style="color: #A67C52; font-weight: 600;">Kustomisasi</a>
+                
+                <div class="mobile-user-menu">
+                    <a href="profile.html">Akun Saya</a>
+                    <a href="javascript:void(0)" onclick="toggleFavorite()">Favorit</a>
+                </div>
+            </nav>
+
+            <div class="user-actions">
+                <div class="search-wrapper">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Cari produk..." onfocus="showDropdown()" onkeyup="filterDropdown()">
+                        <button onclick="goToSearchPage()"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div id="searchDropdown" class="search-dropdown-content">
+                        <a href="pencarian.html?q=kamar-tidur">Kamar Tidur</a>
+                        <a href="pencarian.html?q=ruang-tamu">Ruang Tamu</a>
+                        <a href="pencarian.html?q=meja-kerja">Meja Kerja</a>
+                        <a href="pencarian.html?q=lemari">Lemari Penyimpanan</a>
+                    </div>
+                </div>
+
+                <a href="javascript:void(0)" class="icon-desktop" onclick="toggleFavorite()">
+                    <i class="far fa-heart"></i>
+                    <span id="fav-count" class="badge-count">0</span>
+                </a>
+                
+                <a href="login.html" class="icon-desktop" id="userBtn">
+    <i class="far fa-user"></i>
+</a>
+
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="slider">
+            <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
+                <div class="content">
+                    <h1>Wood Furniture Custom</h1>
+                    <p>Wujudkan desain impian rumah Anda bersama kami.</p>
+                    <a href="#shop" class="btn">Jelajahi Sekarang</a>
+                </div>
+            </div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1616486338812-3dadae4b4f9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
+                <div class="content">
+                    <h1>Kenyamanan & Estetika</h1>
+                    <p>Kualitas kayu terbaik untuk ruang keluarga.</p>
+                    <a href="#shop" class="btn">Lihat Koleksi</a>
+                </div>
+            </div>
+             <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+             <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <section class="features container">
+        <div class="feature-item"><i class="fas fa-shield-alt"></i><div><h4>Garansi Produk</h4><p>Jaminan Asli</p></div></div>
+        <div class="feature-item"><i class="fas fa-truck"></i><div><h4>Gratis Kirim</h4><p>Area Tertentu</p></div></div>
+        <div class="feature-item"><i class="fas fa-headset"></i><div><h4>Online Support</h4><p>Siap 24 Jam</p></div></div>
+        <div class="feature-item"><i class="fas fa-lock"></i><div><h4>Transaksi Aman</h4><p>Terpercaya</p></div></div>
+    </section>
+
+    <section class="custom-banner-section container">
+        <div class="banner-wrapper">
+            <div class="banner-text">
+                <h2>Personalisasikan<br>Desain Bersama Kami</h2>
+                <p>Sesuaikan Desain dengan Kebutuhan<br>dan Keinginan Anda</p>
+            </div>
+            <div class="banner-image">
+                <div class="diamond-shape">
+                    <img src="https://images.unsplash.com/photo-1601058268499-e52658b8bb88?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Woodworking Custom">
+                </div>
+            </div>
+            <div class="banner-btn">
+                <a href="custom.html" class="btn-customize">Customize</a>
+            </div>
+        </div>
+    </section>
+
+  <section id="kategori" class="categories-section container">
+    <div class="section-header-line">
+        </div>
+    
+    <div class="bento-grid">
+        <div class="cat-card card-bed">
+            <img src="bed.png" alt="Kamar Tidur">
+            <div class="cat-label"><h3>Kamar Tidur</h3></div>
+        </div>
+
+        <div class="mid-column">
+            <div class="cat-card card-dining">
+                <div class="cat-label-top"><h3>Ruang<br>Makan</h3></div>
+                <img src="processed_image (7).png" alt="Ruang Makan">
+            </div>
+            
+            <div class="mid-row-split">
+                <div class="cat-card card-work">
+                    <img src="processed_image (6).png" alt="Ruang Kerja">
+                    <div class="cat-label-bottom"><h3>Ruang Kerja</h3></div>
+                </div>
+                <div class="cat-card card-study">
+                    <img src="chair studen.png" alt="Ruang Belajar">
+                    <div class="cat-label-bottom"><h3>Ruang<br>Belajar</h3></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cat-card card-living">
+            <div class="cat-label-top"><h3>Ruang<br>Tamu</h3></div>
+            <img src="processed_image (5).png" alt="Ruang Tamu">
+        </div>
+    </div>
+</section>
+
+   <section class="new-arrivals container">
+        <div class="section-header-line">
+            <h2>Desain Terbaru</h2>
+        </div>
+        <div class="product-scroll-wrapper">
+            <button id="scrollLeft" class="scroll-btn left"><i class="fas fa-chevron-left"></i></button>
+            <div class="product-scroll" id="productScroll">
+                
+                <a href="detail-produk.html?id=lemari-buku" class="product-link-wrapper">
+                    <div class="product-card-minimal">
+                        <div class="img-wrap">
+                            <img src="rak buku product.png" alt="Lemari Buku">
+                            <button class="wishlist-btn" onclick="event.preventDefault(); addToFav(this, 'Lemari Buku', 'Lemari kayu jati', 'rak buku product.png');">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="text-wrap"><h4>Lemari Buku</h4><p class="status">Pre-Order</p></div>
+                    </div>
+                </a>
+
+                <a href="detail-produk.html?id=kursi-minimalis" class="product-link-wrapper">
+                    <div class="product-card-minimal">
+                        <div class="img-wrap">
+                            <img src="kursi minimalis produk.png" alt="Kursi Minimalis">
+                            <button class="wishlist-btn" onclick="event.preventDefault(); addToFav(this, 'Kursi Minimalis', 'Kursi kayu solid', 'kursi minimalis produk.png');"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="text-wrap"><h4>Kursi Minimalis</h4><p class="status">Pre-Order</p></div>
+                    </div>
+                </a>
+
+                <a href="detail-produk.html?id=meja-rias" class="product-link-wrapper">
+                    <div class="product-card-minimal">
+                        <div class="img-wrap">
+                            <img src="meja rias product.png" alt="Meja Rias">
+                            <button class="wishlist-btn" onclick="event.preventDefault(); addToFav(this, 'Meja Rias', 'Meja rias scandi', 'meja rias product.png');"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="text-wrap"><h4>Meja Rias</h4><p class="status">Pre-Order</p></div>
+                    </div>
+                </a>
+
+                <a href="detail-produk.html?id=meja-nakas" class="product-link-wrapper">
+                    <div class="product-card-minimal">
+                        <div class="img-wrap">
+                            <img src="meja nikas.png" alt="Meja Nakas">
+                            <button class="wishlist-btn" onclick="event.preventDefault(); addToFav(this, 'Meja Nakas', 'Meja kecil bedside', 'meja nikas.png');"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="text-wrap"><h4>Meja Nakas</h4><p class="status">Pre-Order</p></div>
+                    </div>
+                </a>
+
+                <a href="detail-produk.html?id=mimbar" class="product-link-wrapper">
+                    <div class="product-card-minimal">
+                        <div class="img-wrap">
+                            <img src="mimbar product.png" alt="Mimbar Kayu">
+                            <button class="wishlist-btn" onclick="event.preventDefault(); addToFav(this, 'Mimbar Kayu', 'Mimbar masjid', 'mimbar product.png');"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="text-wrap"><h4>Mimbar Kayu</h4><p class="status">Pre-Order</p></div>
+                    </div>
+                </a>
+
+                <a href="detail-produk.html?id=ranjang-kayu" class="product-link-wrapper">
+                    <div class="product-card-minimal">
+                        <div class="img-wrap">
+                            <img src="bed product.png" alt="Ranjang Kayu">
+                            <button class="wishlist-btn" onclick="event.preventDefault(); addToFav(this, 'Ranjang Kayu', 'Dipan queen size', 'bed product.png');"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="text-wrap"><h4>Ranjang Kayu</h4><p class="status">Pre-Order</p></div>
+                    </div>
+                </a>
+
+                <a href="detail-produk.html?id=lemari-laci" class="product-link-wrapper">
+                    <div class="product-card-minimal">
+                        <div class="img-wrap">
+                            <img src="lemari laci product.png" alt="Lemari Laci">
+                            <button class="wishlist-btn" onclick="event.preventDefault(); addToFav(this, 'Lemari Laci', 'Laci 5 susun', 'lemari laci product.png');"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="text-wrap"><h4>Lemari Laci</h4><p class="status">Pre-Order</p></div>
+                    </div>
+                </a>
+
+                <a href="detail-produk.html?id=rak-gelas" class="product-link-wrapper">
+                    <div class="product-card-minimal">
+                        <div class="img-wrap">
+                            <img src="Frame 345 (2) 1.png" alt="Rak Gelas">
+                            <button class="wishlist-btn" onclick="event.preventDefault(); addToFav(this, 'Rak Gelas', 'Rak dinding gantung', 'rak gelas.png');"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="text-wrap"><h4>Rak Gelas</h4><p class="status">Pre-Order</p></div>
+                    </div>
+                </a>
+
+            </div>
+            <button id="scrollRight" class="scroll-btn right"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <section class="furniture-showcase container">
+        <div class="showcase-grid">
+            <div class="grid-item item-main">
+                <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Meja Makan Kayu">
+            </div>
+
+            <div class="grid-item item-top">
+                <img src="Mask group.png" alt="Pembuatan Furniture">
+            </div>
+
+            <div class="grid-item item-text">
+                <div class="text-content">
+                    <h2>Furniture<br>Rompok Kayu</h2>
+                    <p>Ciptakan Rumah Impian dengan inovasi desain furniture kami.</p>
+                    
+                    <a href="custom.html" class="link-arrow">
+                        JELAJAHI SEKARANG <i class="fas fa-arrow-up-right-from-square" style="transform: rotate(45deg); display:inline-block;"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid-item item-small">
+                <img src="Mask group (1).png" alt="Set Kursi Makan">
+            </div>
+        </div>
+    </section>
+
+    <section id="shop" class="all-products container">
+        <div class="section-header-line">
+            <h2>Produk Kami</h2>
+        </div>
+        <div class="product-grid-static">
+            
+            <a href="detail-produk.html?id=lemari-buku" class="product-link-wrapper">
+                <div class="product-card-minimal">
+                    <div class="img-wrap">
+                        <img src="rak buku product.png" alt="Lemari Buku">
+                        <button class="wishlist-btn" onclick="event.preventDefault(); addToFav(this, 'Lemari Buku', 'Lemari kayu jati', 'rak buku product.png');"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="text-wrap"><h4>Lemari Buku</h4><p class="status">Pre-Order</p></div>
+                </div>
+            </a>
+
+            <a href="detail-produk.html?id=kursi-minimalis" class="product-link-wrapper">
+                <div class="product-card-minimal">
+                    <div class="img-wrap">
+                        <img src="kursi minimalis produk.png" alt="Kursi Minimalis">
+                        <button class="wishlist-btn" onclick="event.preventDefault(); addToFav(this, 'Kursi Minimalis', 'Kursi kayu solid', 'kursi minimalis produk.png');"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="text-wrap"><h4>Kursi Minimalis</h4><p class="status">Pre-Order</p></div>
+                </div>
+            </a>
+
+            <a href="detail-produk.html?id=meja-rias" class="product-link-wrapper">
+                <div class="product-card-minimal">
+                    <div class="img-wrap">
+                        <img src="meja rias product.png" alt="Meja Rias">
+                        <button class="wishlist-btn" onclick="event.preventDefault(); addToFav(this, 'Meja Rias', 'Meja rias scandi', 'meja rias product.png');"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="text-wrap"><h4>Meja Rias</h4><p class="status">Pre-Order</p></div>
+                </div>
+            </a>
+
+            <a href="detail-produk.html?id=meja-nakas" class="product-link-wrapper">
+                <div class="product-card-minimal">
+                    <div class="img-wrap">
+                        <img src="meja nikas.png" alt="Meja Nakas">
+                        <button class="wishlist-btn" onclick="event.preventDefault(); addToFav(this, 'Meja Nakas', 'Meja nakas bedside', 'meja nikas.png');"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="text-wrap"><h4>Meja Nakas</h4><p class="status">Pre-Order</p></div>
+                </div>
+            </a>
+
+            <a href="detail-produk.html?id=mimbar" class="product-link-wrapper">
+                <div class="product-card-minimal">
+                    <div class="img-wrap">
+                        <img src="mimbar product.png" alt="Mimbar Kayu">
+                        <button class="wishlist-btn" onclick="event.preventDefault(); addToFav(this, 'Mimbar Kayu', 'Mimbar masjid jati', 'mimbar product.png');"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="text-wrap"><h4>Mimbar Kayu</h4><p class="status">Pre-Order</p></div>
+                </div>
+            </a>
+
+            <a href="detail-produk.html?id=ranjang-kayu" class="product-link-wrapper">
+                <div class="product-card-minimal">
+                    <div class="img-wrap">
+                        <img src="bed product.png" alt="Ranjang Kayu">
+                        <button class="wishlist-btn" onclick="event.preventDefault(); addToFav(this, 'Ranjang Kayu', 'Dipan queen size', 'bed product.png');"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="text-wrap"><h4>Ranjang Kayu</h4><p class="status">Pre-Order</p></div>
+                </div>
+            </a>
+
+            <a href="detail-produk.html?id=lemari-laci" class="product-link-wrapper">
+                <div class="product-card-minimal">
+                    <div class="img-wrap">
+                        <img src="lemari laci product.png" alt="Lemari Laci">
+                        <button class="wishlist-btn" onclick="event.preventDefault(); addToFav(this, 'Lemari Laci', 'Laci 5 susun', 'lemari laci product.png');"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="text-wrap"><h4>Lemari Laci</h4><p class="status">Pre-Order</p></div>
+                </div>
+            </a>
+
+            <a href="detail-produk.html?id=rak-gelas" class="product-link-wrapper">
+                <div class="product-card-minimal">
+                    <div class="img-wrap">
+                        <img src="Frame 345 (2) 1.png" alt="Rak Gelas">
+                        <button class="wishlist-btn" onclick="event.preventDefault(); addToFav(this, 'Rak Gelas', 'Rak dinding gantung', 'rak gelas.png');"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="text-wrap"><h4>Rak Gelas</h4><p class="status">Pre-Order</p></div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <section id="about" class="about-modern">
+        <div class="bg-overlay"></div>
+        <div class="container about-wrapper">
+            <div class="about-images">
+                <div class="float-box box-top"></div>
+                <div class="main-img-frame"><img src="https://images.unsplash.com/photo-1601058268499-e52658b8bb88?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Pengrajin Rompok Kayu"></div>
+                <div class="float-box box-bottom"></div>
+            </div>
+            <div class="about-text-modern">
+                <div class="small-title"><span>Tentang Kami</span><span class="line"></span></div>
+                <h2>Rompok Kayu</h2>
+                <p>Sebagai platform furnitur custom kebanggaan Sumedang, Rompok Kayu berkomitmen menjembatani keahlian otentik pengrajin lokal dengan visi interior Anda, memastikan setiap karya yang dihasilkan bukan sekadar perabot, melainkan wujud nyata dari kenyamanan, estetika, dan kualitas terbaik yang siap melengkapi ruang impian Anda.</p>
+                <p>Lebih dari sekadar tempat memesan furnitur, kami hadir untuk memadukan teknologi modern dengan seni kriya tradisional. Melalui sistem yang transparan dan mudah diakses, Rompok Kayu memberikan Anda kebebasan penuh dalam merealisasikan desain impian, sekaligus turut serta memajukan perekonomian para pengrajin daerah agar terus tumbuh dan berdaya.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews container">
+        <div class="review-header-right"><h2>Review Customer</h2><p>Penilaian layanan dari customer kami</p></div>
+        <div class="review-scroll-wrapper">
+            <div class="review-card-outline">
+                <div class="reviewer-profile"><img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Reva"><div class="reviewer-info"><h4>Reva</h4><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
+                <p class="review-content">"Puas banget sama hasil custom lemarinya! Ukurannya presisi sesuai request saya, dan finishing-nya halus banget. Bener-bener bikin ruangan jadi lebih estetik. Thanks Rompok Kayu!"</p>
+            </div>
+            <div class="review-card-outline">
+                <div class="reviewer-profile"><img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Tamam"><div class="reviewer-info"><h4>Warren Tamam</h4><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
+                <p class="review-content">"Kualitas kayunya nggak main-main. Terasa kokoh dan solid, bukan kayu olahan murahan. Worth it banget dengan harganya. Bakal langganan buat ngisi perabotan rumah nih."</p>
+            </div>
+            <div class="review-card-outline">
+                <div class="reviewer-profile"><img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Mazil"><div class="reviewer-info"><h4>Mazil</h4><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div></div></div>
+                <p class="review-content">"Pelayanan ramah sekali, admin fast respon pas konsultasi desain. Pengiriman juga aman sampai tujuan, tidak ada lecet sedikitpun. Recommended!"</p>
+            </div>
+            <div class="review-card-outline">
+                <div class="reviewer-profile"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Devis"><div class="reviewer-info"><h4>Dianne Devis</h4><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
+                <p class="review-content">"Suka sekali dengan serat kayu alaminya yang ditonjolkan. Desainnya simpel tapi elegan, kasih kesan 'hangat' dan homey di ruang tamu. Sesuai banget sama selera saya."</p>
+            </div>
+            <div class="review-card-outline">
+                <div class="reviewer-profile"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Ari"><div class="reviewer-info"><h4>Ari</h4><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
+                <p class="review-content">"Custom ukuran pas banget di sudut ruangan saya yang sempit. Solusi cerdas buat rumah minimalis. Terima kasih Rompok Kayu!"</p>
+            </div>
+        </div>
+    </section>
+
+  <section id="blog" class="blog-modern-section container">
+        <div class="blog-header-center"><h2>Blog Terbaru</h2><p>Seputar Tips dan Trik produk kami</p></div>
+        <div class="blog-scroll-wrapper">
+            <button id="blogLeft" class="scroll-btn left"><i class="fas fa-chevron-left"></i></button>
+            <div class="blog-scroll" id="blogScroll">
+                
+                <div class="blog-card-modern">
+                    <div class="blog-img"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Tips"></div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Tips, Trik</span>
+                        <h4>Tips merawat furniture kayu agar tahan lama dan tetap mengkilap.</h4>
+                        <a href="detail-blog.html?id=tips-merawat" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <div class="blog-card-modern">
+                    <div class="blog-img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Kerja"></div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Inspirasi</span>
+                        <h4>Menata ruang kerja minimalis untuk produktivitas maksimal.</h4>
+                        <a href="detail-blog.html?id=ruang-kerja" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <div class="blog-card-modern">
+                    <div class="blog-img"><img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Tren"></div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Desain</span>
+                        <h4>Tren interior 2026: Kembali ke konsep alam dengan material kayu.</h4>
+                        <a href="detail-blog.html?id=tren-interior" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <div class="blog-card-modern">
+                    <div class="blog-img"><img src="https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Material"></div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Material</span>
+                        <h4>Mengenal perbedaan kayu jati, mahoni, dan sungkai.</h4>
+                        <a href="detail-blog.html?id=beda-kayu" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+            </div>
+            <button id="blogRight" class="scroll-btn right"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+    
+    <footer class="footer-final">
+        <div class="container">
+            <div class="footer-logo-wrapper"><div class="footer-logo-content"><i class="fas fa-couch"></i><div class="logo-text"><span>Rompok</span><span>Kayu</span></div></div></div>
+            <div class="footer-grid">
+                <div class="footer-column"><h4>Sosial Media</h4><div class="contact-item"><div class="icon-circle facebook"><i class="fab fa-facebook-f"></i></div><div class="contact-text"><span class="title">Facebook</span><span class="desc">Rompok Kayu</span></div></div><div class="contact-item"><div class="icon-circle tiktok"><i class="fab fa-tiktok"></i></div><div class="contact-text"><span class="title">Tiktok</span><span class="desc">Rompok Kayu Official</span></div></div><div class="contact-item"><div class="icon-circle x-twitter"><i class="fab fa-x-twitter"></i></div><div class="contact-text"><span class="title">X</span><span class="desc">Rompok Kayu</span></div></div><div class="contact-item"><div class="icon-circle pinterest"><i class="fab fa-pinterest-p"></i></div><div class="contact-text"><span class="title">Pinterest</span><span class="desc">Rompok Kayu Indonesia</span></div></div></div>
+                <div class="footer-column"><h4>Kontak Kami</h4><div class="contact-item"><div class="icon-circle whatsapp"><i class="fab fa-whatsapp"></i></div><div class="contact-text"><span class="title">Whatsapp</span><span class="desc">+62 89367563</span></div></div><div class="contact-item"><div class="icon-circle telegram"><i class="fab fa-telegram-plane"></i></div><div class="contact-text"><span class="title">Telegram</span><span class="desc">+62 89367563</span></div></div></div>
+                <div class="footer-column"><h4>Pembayaran</h4><div class="contact-item"><div class="icon-circle dana"><i class="fas fa-wallet"></i></div><div class="contact-text"><span class="title">Dana</span><span class="desc">A.N Rompok Kayu</span><span class="sub-desc">Rek.+62 89367563</span></div></div><div class="contact-item"><div class="icon-circle bri"><i class="fas fa-university"></i></div><div class="contact-text"><span class="title">Bank BRI</span><span class="desc">A.N Rompok Kayu</span><span class="sub-desc">Rek. 234-0006-976</span></div></div></div>
+                <div class="footer-column"><h4>Bantuan</h4><ul class="help-links"><li><a href="#">Tips</a></li><li><a href="#">Tutorial</a></li><li><a href="#">Feedback</a></li></ul></div>
+            </div>
+        </div>
+        <div class="footer-bottom-border"></div>
+        <p style="text-align:center; font-size:0.8rem; padding:20px 0; color:white;">&copy; 2026 Rompok Kayu. All rights reserved.</p>
+    </footer>
+
+    <div id="favoriteOverlay" class="favorite-overlay">
+        <div class="fav-content">
+            <div class="fav-header">
+                <h3>Favorit Saya</h3>
+                <button class="close-fav" onclick="toggleFavorite()"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div id="favoriteList" class="fav-body">
+                </div>
+
+            <div class="fav-footer">
+                <button class="btn-action btn-brown" style="width:100%;" onclick="checkoutFavorites()">
+                    Pesan Sekarang
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

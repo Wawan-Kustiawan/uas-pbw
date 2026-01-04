@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - Rompok Kayu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="TentangKami.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <a href="index.html">
+                <i class="fas fa-couch"></i> Rompok Kayu
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="index.html#categories">Kategori</a></li> <li><a href="index.html#blog">Blog</a></li>
+                <li><a href="tentang-kami.html" class="active">Tentang Kami</a></li>
+            </ul>
+        </nav>
+        
+        <div class="header-icons">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Cari...">
+                <button onclick="handleSearch()"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <a href="#" onclick="toggleFavorite()"><i class="far fa-heart"></i></a>
+            
+            <a href="login.html" id="userBtn"><i class="far fa-user"></i></a>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <h1 class="hero-title">Tentang<br>Kami</h1>
+
+        <div class="annotation point-1">
+            <p>“Rompok” yang berarti “Rumah”<br>dalam bahasa Sunda.</p>
+        </div>
+        
+        <div class="annotation point-2">
+            <p>“Kayu” yang berarti keahlian<br>khusus kami di bidang Furniture.</p>
+        </div>
+
+        <div class="annotation point-3">
+            <p>Rumah bagi ide dan<br>inspirasi furnitur Anda.</p>
+        </div>
+
+        <div class="arch-logo-container">
+            <div class="arch-card">
+                <i class="fas fa-couch"></i> </div>
+        </div>
+    </section>
+
+    <section class="split-intro">
+        <div class="intro-left">
+            <div class="intro-text-box">
+                <h2 class="brand-name">Rompok<br>Kayu</h2>
+                <p class="brand-tag">Sahabat Furniture Anda</p>
+            </div>
+        </div>
+
+        <div class="intro-right">
+            <div class="intro-desc-box">
+                <p>
+                    Kami hadir menjadi mitra Anda dalam menciptakan furniture yang personal dan berkarakter. 100% Kustom Sesuai Keinginan Anda.
+                    <br><br>
+                    Bawa semua inspirasi Anda kepada kami. Kami siap mewujudkannya.
+                </p>
+                
+                <div class="mini-gallery">
+                    <img src="lemari laci product.png" alt="Meja">
+                    <img src="meja rias product.png" alt="Meja Rias">
+                    <img src="kursi minimalis produk.png" alt="Kursi">
+                </div>
+
+                <a href="custom.html" class="btn-pill-white">Selengkapnya <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="split-features">
+        <div class="features-left">
+            <div class="feature-content">
+                <h2 class="section-heading white">Mengapa Memilih<br>Rompok Kayu?</h2>
+
+                    
+                    <div class="square-card c1">
+                        <i class="fas fa-check"></i>
+                        <div class="card-info">
+                            <h4>Kualitas</h4>
+                            <p>Kayu jati solid grade A tahan lama.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="square-card c2">
+                        <i class="fas fa-shield-alt"></i>
+                        <div class="card-info">
+                            <h4>Aman</h4>
+                            <p>Transaksi terjamin & garansi pengiriman.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="square-card c3">
+                        <i class="fas fa-thumbs-up"></i>
+                        <div class="card-info">
+                            <h4>Puas</h4>
+                            <p>Jaminan kepuasan hasil akhir produk.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <p class="feature-note">Hubungi kami untuk konsultasi gratis dan mulailah menciptakan furnitur impian Anda bersama Rompok Kayu.</p>
+            </div>
+        </div>
+
+        <div class="features-right">
+            <div class="service-content">
+                <h2 class="section-heading brown">Apa Layanan Utama<br>Kami?</h2>
+                
+                <div class="service-buttons">
+                    <button class="svc-btn">Custom Furniture</button>
+                    <button class="svc-btn">Konsultasi Online</button>
+                    <button class="svc-btn">Fitur Quick Order</button>
+                    <button class="svc-btn">Update Tracking Pesanan</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <h2 class="team-heading">Tim Developer</h2>
+
+        <div class="team-wave">
+            <div class="team-member pos-low">
+                <img src="galang.jpg" alt="Galang">
+            </div>
+            <div class="team-member pos-mid">
+                <img src="heri.jpeg" alt="Heri">
+            </div>
+            <div class="team-member pos-high"> <img src="aldafa.jpeg" alt="Aldafa">
+            </div>
+            <div class="team-member pos-mid">
+                <img src="wawan.jpeg" alt="Wawan">
+            </div>
+            <div class="team-member pos-low">
+                <img src="enjang.jpeg" alt="Enjang">
+            </div>
+        </div>
+
+        <div class="decor-circle big"></div>
+        <div class="decor-circle small"></div>
+        <div class="decor-shape-left"></div>
+    </section>
+
+    <footer class="footer-centered">
+        <div class="footer-logo-box">
+            <i class="fas fa-couch"></i> <span>Rompok<br>Kayu</span>
+        </div>
+        
+        <div class="footer-links-row">
+            <div class="f-col">
+                <h4>Social Media</h4>
+                <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="#"><i class="fab fa-tiktok"></i> Tiktok</a>
+                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+            </div>
+            <div class="f-col">
+                <h4>Kontak Kami</h4>
+                <a href="#"><i class="fab fa-whatsapp"></i> +62 88297582</a>
+                <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
+            </div>
+            <div class="f-col">
+                <h4>Pembayaran</h4>
+                <p><i class="fas fa-wallet"></i> Dana, OVO, BCA</p>
+            </div>
+            <div class="f-col">
+                <h4>Bantuan</h4>
+                <a href="#">Tips & Trik</a>
+                <a href="#">FAQ</a>
+            </div>
+        </div>
+    </footer>
+
+<script src="script.js"></script>
+</body>
+</html>

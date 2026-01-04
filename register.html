@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Akun - Rompok Kayu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS Khusus Register Step (Inline biar praktis) */
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .step-dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .step-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        .form-step {
+            display: none; /* Sembunyikan semua step dulu */
+            animation: fadeIn 0.5s;
+        }
+        .form-step.active {
+            display: block; /* Munculkan step aktif */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="login-body">
+
+    <a href="login.html" class="btn-back-login">
+        <i class="fas fa-arrow-left"></i> Login
+    </a>
+
+    <div class="login-container">
+        <div class="login-box">
+            
+            <div class="step-indicator">
+                <div class="step-dot active" id="dot1"></div>
+                <div class="step-dot" id="dot2"></div>
+                <div class="step-dot" id="dot3"></div>
+            </div>
+
+            <div id="step1" class="form-step active">
+                <h2>Halo! 👋</h2>
+                <p style="margin-bottom: 20px; opacity: 0.9;">Mari mulai dengan email Anda.</p>
+                <input type="email" id="regEmail" placeholder="Masukkan Email Anda..." required>
+                <button class="btn-login-submit" onclick="nextStep(2)">Lanjut <i class="fas fa-arrow-right"></i></button>
+                
+                <div class="social-login" style="margin-top: 30px;">
+                    <button class="social-btn google" onclick="alert('Daftar Google...')"><img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="G"></button>
+                    <button class="social-btn facebook" onclick="alert('Daftar FB...')"><i class="fab fa-facebook-f"></i></button>
+                </div>
+            </div>
+
+            <div id="step2" class="form-step">
+                <h2>Amankan Akun 🔒</h2>
+                <p style="margin-bottom: 20px; opacity: 0.9;">Buat kata sandi yang kuat.</p>
+                <input type="password" id="regPass" placeholder="Password" required>
+                <input type="password" id="regPassConfirm" placeholder="Ulangi Password" required>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn-login-submit" style="background: rgba(255,255,255,0.2); color: white;" onclick="nextStep(1)">Kembali</button>
+                    <button class="btn-login-submit" onclick="nextStep(3)">Lanjut</button>
+                </div>
+            </div>
+
+            <div id="step3" class="form-step">
+                <h2>Siapa Nama Anda? 😊</h2>
+                <p style="margin-bottom: 20px; opacity: 0.9;">Agar kami bisa menyapa Anda dengan benar.</p>
+                <input type="text" id="regName" placeholder="Nama Lengkap" required>
+                <input type="tel" id="regPhone" placeholder="Nomor WhatsApp (Opsional)">
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn-login-submit" style="background: rgba(255,255,255,0.2); color: white;" onclick="nextStep(2)">Kembali</button>
+                    <button class="btn-login-submit" onclick="finishRegister()">Selesai & Daftar</button>
+                </div>
+            </div>
+
+            <div id="stepSuccess" class="form-step" style="text-align: center;">
+                <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
+                <h2>Hore! Berhasil.</h2>
+                <p>Akun Anda telah dibuat. Mengalihkan ke Login...</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Data Registrasi Sementara
+        let regData = {};
+
+        function nextStep(step) {
+            // Validasi Sederhana
+            if(step === 2) {
+                const email = document.getElementById('regEmail').value;
+                if(!email.includes('@')) return alert("Masukkan email yang valid!");
+                regData.email = email;
+            }
+            if(step === 3) {
+                const p1 = document.getElementById('regPass').value;
+                const p2 = document.getElementById('regPassConfirm').value;
+                if(!p1 || p1 !== p2) return alert("Password tidak cocok atau kosong!");
+                regData.password = p1;
+            }
+
+            // Ganti Tampilan Step
+            document.querySelectorAll('.form-step').forEach(el => el.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+
+            // Update Titik Indikator
+            document.querySelectorAll('.step-dot').forEach(el => el.classList.remove('active'));
+            document.getElementById('dot' + step).classList.add('active');
+        }
+
+        function finishRegister() {
+            const name = document.getElementById('regName').value;
+            if(!name) return alert("Nama tidak boleh kosong!");
+            
+            // Tampilkan Layar Sukses
+            document.querySelectorAll('.form-step').forEach(el => el.classList.remove('active'));
+            document.getElementById('stepSuccess').classList.add('active');
+            
+            // Redirect setelah 2 detik
+            setTimeout(() => {
+                window.location.href = "login.html";
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>

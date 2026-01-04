@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pencarian Produk - Rompok Kayu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="top-bar container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration:none; color:inherit;">
+                    <i class="fas fa-couch"></i> Rompok Kayu
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Beranda</a>
+                <a href="index.html#kategori">Kategori</a>
+                <a href="index.html#blog">Blog</a>
+                <a href="index.html#about">Tentang Kami</a>
+            </nav>
+            <div class="user-actions">
+                <div class="search-wrapper">
+                    <div class="search-box">
+                        <input type="text" placeholder="Cari Kategori Produk..." value="Lemari">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <a href="#" class="icon-desktop"><i class="far fa-heart"></i></a>
+                <a href="#" class="icon-desktop"><i class="far fa-user"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <section class="search-page-section container">
+        <div class="search-layout">
+            
+            <aside class="filter-sidebar">
+                <h3>Filter</h3>
+                
+                <div class="filter-group">
+                    <h4>Kategori Desain</h4>
+                    
+                    <label class="checkbox-container">Kamar Tidur
+                        <input type="checkbox" class="filter-chk" value="kamar-tidur">
+                        <span class="checkmark"></span>
+                    </label>
+                    
+                    <label class="checkbox-container">Ruang Tamu
+                        <input type="checkbox" class="filter-chk" value="ruang-tamu">
+                        <span class="checkmark"></span>
+                    </label>
+                    
+                    <label class="checkbox-container">Ruang Makan
+                        <input type="checkbox" class="filter-chk" value="ruang-makan">
+                        <span class="checkmark"></span>
+                    </label>
+                    
+                    <label class="checkbox-container">Ruang Belajar
+                        <input type="checkbox" class="filter-chk" value="ruang-belajar">
+                        <span class="checkmark"></span>
+                    </label>
+                    
+                    <label class="checkbox-container">Ruang Kerja
+                        <input type="checkbox" class="filter-chk" value="ruang-kerja">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </aside>
+
+            <div class="search-results">
+                <div class="product-grid-static" style="padding-top: 0;">
+                    
+                    <a href="detail-produk.html?id=lemari-buku" class="product-link-wrapper filter-item" data-category="ruang-kerja">
+                        <div class="product-card-minimal">
+                            <div class="img-wrap">
+                                <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Lemari Buku">
+                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            </div>
+                            <div class="text-wrap">
+                                <h4>Lemari Buku</h4>
+                                <p class="status">Pre-Order</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="detail-produk.html?id=kursi-minimalis" class="product-link-wrapper filter-item" data-category="ruang-tamu">
+                        <div class="product-card-minimal">
+                            <div class="img-wrap">
+                                <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Kursi Minimalis">
+                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            </div>
+                            <div class="text-wrap">
+                                <h4>Kursi Minimalis</h4>
+                                <p class="status">Pre-Order</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="detail-produk.html?id=meja-rias" class="product-link-wrapper filter-item" data-category="kamar-tidur">
+                        <div class="product-card-minimal">
+                            <div class="img-wrap">
+                                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4f9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Meja Rias">
+                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            </div>
+                            <div class="text-wrap">
+                                <h4>Meja Rias</h4>
+                                <p class="status">Pre-Order</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="detail-produk.html?id=mimbar" class="product-link-wrapper filter-item" data-category="ruang-kerja">
+                        <div class="product-card-minimal">
+                            <div class="img-wrap">
+                                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Mimbar">
+                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            </div>
+                            <div class="text-wrap">
+                                <h4>Mimbar</h4>
+                                <p class="status">Pre-Order</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="detail-produk.html?id=ranjang-kayu" class="product-link-wrapper filter-item" data-category="kamar-tidur">
+                        <div class="product-card-minimal">
+                            <div class="img-wrap">
+                                <img src="https://images.unsplash.com/photo-1505693314120-0d443867891c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Ranjang Kayu">
+                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            </div>
+                            <div class="text-wrap">
+                                <h4>Ranjang Kayu</h4>
+                                <p class="status">Pre-Order</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="detail-produk.html?id=lemari-laci" class="product-link-wrapper filter-item" data-category="ruang-belajar">
+                        <div class="product-card-minimal">
+                            <div class="img-wrap">
+                                <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Lemari Laci">
+                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            </div>
+                            <div class="text-wrap">
+                                <h4>Lemari Laci</h4>
+                                <p class="status">Pre-Order</p>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer-final">
+        <div class="container">
+            <div class="footer-logo-wrapper">
+                <div class="footer-logo-content">
+                    <i class="fas fa-couch"></i>
+                    <div class="logo-text"><span>Rompok</span><span>Kayu</span></div>
+                </div>
+            </div>
+            
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Sosial Media</h4>
+                    <div class="contact-item"><div class="icon-circle facebook"><i class="fab fa-facebook-f"></i></div><div class="contact-text"><span class="title">Facebook</span><span class="desc">Rompok Kayu</span></div></div>
+                    <div class="contact-item"><div class="icon-circle tiktok"><i class="fab fa-tiktok"></i></div><div class="contact-text"><span class="title">Tiktok</span><span class="desc">Rompok Kayu Official</span></div></div>
+                </div>
+                <div class="footer-column">
+                    <h4>Kontak Kami</h4>
+                    <div class="contact-item"><div class="icon-circle whatsapp"><i class="fab fa-whatsapp"></i></div><div class="contact-text"><span class="title">Whatsapp</span><span class="desc">+62 89367563</span></div></div>
+                </div>
+                <div class="footer-column">
+                    <h4>Pembayaran</h4>
+                    <div class="contact-item"><div class="icon-circle dana"><i class="fas fa-wallet"></i></div><div class="contact-text"><span class="title">Dana</span><span class="desc">A.N Rompok Kayu</span></div></div>
+                </div>
+                <div class="footer-column">
+                    <h4>Bantuan</h4>
+                    <ul class="help-links"><li><a href="#">Tips</a></li><li><a href="#">Tutorial</a></li><li><a href="#">Feedback</a></li></ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom-border"></div>
+            <p style="text-align:center; font-size:0.8rem; padding:20px 0; color:white;">&copy; 2026 Rompok Kayu. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script> 
+
+</body>
+</html>

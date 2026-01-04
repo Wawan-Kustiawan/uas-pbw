@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Account - Rompok Kayu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body {
+            background-color: #8D6E63;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .va-container {
+            background-color: #fff;
+            width: 100%;
+            max-width: 900px;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .btn-back {
+            background-color: #A67C52;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        .progress-step { display: flex; align-items: center; gap: 5px; }
+        .progress-step.active { color: #A67C52; font-weight: 600; }
+        .dot { width: 8px; height: 8px; background: #ccc; border-radius: 50%; }
+        .dot.active { background: #A67C52; }
+        .line { width: 50px; height: 2px; background: #ccc; }
+        .line.active { background: #A67C52; }
+
+        .va-card {
+            background-color: #FFF5EB;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+            width: 100%;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .va-label { color: #8D6E63; font-weight: 700; font-size: 1.1rem; margin-bottom: 20px; }
+        .va-number { font-size: 2.5rem; font-weight: 700; color: #8D6E63; margin-bottom: 10px; letter-spacing: 2px; word-break: break-all; }
+        
+        .btn-copy {
+            color: #27ae60; font-weight: 600; cursor: pointer; text-decoration: none; font-size: 1rem; margin-bottom: 30px; display: inline-block;
+        }
+        .btn-copy:hover { text-decoration: underline; }
+
+        .va-instruction { font-size: 0.85rem; color: #888; margin-bottom: 40px; line-height: 1.6; max-width: 80%; }
+        .status-label { color: #8D6E63; font-size: 0.9rem; margin-bottom: 10px; display: block; }
+
+        .btn-done {
+            background-color: #A67C52; color: white; border: none; padding: 15px 60px;
+            border-radius: 10px; font-size: 1.1rem; font-weight: 700; cursor: pointer;
+            transition: 0.3s; box-shadow: 0 5px 15px rgba(166, 124, 82, 0.3);
+        }
+        .btn-done:hover { background-color: #8D6E63; transform: translateY(-2px); }
+
+        /* ======================== */
+        /* CSS POPUP TIMER (BARU)   */
+        /* ======================== */
+        .timer-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+            display: none; /* Hidden Default */
+            justify-content: center; align-items: center;
+            z-index: 1000;
+        }
+        .timer-box {
+            background: white; padding: 40px; border-radius: 20px;
+            text-align: center; width: 90%; max-width: 400px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            animation: popUp 0.3s ease;
+        }
+        @keyframes popUp { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
+
+        .timer-circle {
+            width: 80px; height: 80px; border-radius: 50%;
+            border: 5px solid #A67C52; color: #A67C52;
+            font-size: 2.5rem; font-weight: 700;
+            display: flex; justify-content: center; align-items: center;
+            margin: 20px auto;
+        }
+        .timer-text { font-size: 1rem; color: #555; margin-bottom: 30px; }
+        
+        /* Tombol Batalkan */
+        .btn-cancel-timer {
+            background-color: #e74c3c; color: white; border: none; padding: 12px 30px;
+            border-radius: 25px; font-weight: 600; cursor: pointer; width: 100%;
+            transition: 0.3s;
+        }
+        .btn-cancel-timer:hover { background-color: #c0392b; }
+        
+        .timer-note { font-size: 0.8rem; color: #999; margin-top: 15px; }
+
+    </style>
+</head>
+<body>
+
+    <div class="va-container">
+        <a href="pembayaran.html" class="btn-back"><i class="fas fa-arrow-left"></i> Kembali</a>
+
+        <div class="progress-header">
+            <div class="progress-step active"><div class="dot active"></div> Deskripsi Pembayaran</div>
+            <div class="line active"></div>
+            <div class="progress-step active"><div class="dot active"></div> Review (VA)</div>
+        </div>
+
+        <div class="va-card">
+            <h3 class="va-label">Kode Virtual Account</h3>
+            <div class="va-number" id="vaCode">112080972549725482</div>
+            <span class="btn-copy" onclick="copyToClipboard()">Salin</span>
+            <p class="va-instruction">Silahkan lakukan pembayaran melalui virtual account platform bank terpilih. Pastikan nominal uang sesuai.</p>
+            <span class="status-label">Status Pembayaran</span>
+            
+            <button class="btn-done" onclick="startPaymentTimer()">Sudah Bayar</button>
+        </div>
+    </div>
+
+    <div class="timer-overlay" id="timerOverlay">
+        <div class="timer-box">
+            <h3>Memproses Pesanan</h3>
+            <div class="timer-circle" id="countDown">10</div>
+            <p class="timer-text">Pesanan akan otomatis diproses jika waktu habis.</p>
+            
+            <button class="btn-cancel-timer" onclick="cancelOrder()">Batalkan Pesanan</button>
+            <p class="timer-note">Tekan tombol di atas untuk membatalkan</p>
+        </div>
+    </div>
+
+    <script>
+        // 1. Salin Kode VA
+        function copyToClipboard() {
+            const vaText = document.getElementById('vaCode').innerText;
+            navigator.clipboard.writeText(vaText).then(() => {
+                const btn = document.querySelector('.btn-copy');
+                btn.innerText = "Tersalin!";
+                btn.style.color = "#A67C52";
+                setTimeout(() => { btn.innerText = "Salin"; btn.style.color = "#27ae60"; }, 2000);
+            });
+        }
+
+        // ==========================================
+        // LOGIKA TIMER 10 DETIK & PEMBATALAN
+        // ==========================================
+        
+        let timerInterval;
+        let timeLeft = 10;
+        const overlay = document.getElementById('timerOverlay');
+        const display = document.getElementById('countDown');
+
+        // A. Mulai Timer (Saat klik Sudah Bayar)
+        function startPaymentTimer() {
+            overlay.style.display = 'flex'; // Munculkan Popup
+            timeLeft = 10; // Reset waktu
+            display.innerText = timeLeft;
+
+            // Hitung mundur setiap 1 detik
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                display.innerText = timeLeft;
+
+                if (timeLeft <= 0) {
+                    // WAKTU HABIS -> PROSES PESANAN (SUKSES)
+                    clearInterval(timerInterval);
+                    processSuccess();
+                }
+            }, 1000);
+        }
+
+        // B. Batalkan Pesanan (Tombol Merah)
+        function cancelOrder() {
+            clearInterval(timerInterval); // Stop Timer
+            
+            // Simpan sebagai "Pembatalan"
+            saveToHistory('Dibatalkan');
+
+            alert("Pesanan Dibatalkan.");
+            window.location.href = "profile.html"; // Ke Profil (Tab Pembatalan)
+        }
+
+        // C. Proses Sukses (Otomatis jika waktu habis)
+        function processSuccess() {
+            // Simpan sebagai "Sedang Diproses"
+            saveToHistory('Sedang Diproses');
+
+            alert("Pembayaran Berhasil! Pesanan sedang diproses.");
+            window.location.href = "profile.html"; // Ke Profil (Tab Diproses)
+        }
+
+        // D. Fungsi Simpan ke Riwayat (Dipakai oleh B dan C)
+        function saveToHistory(statusPesanan) {
+            const currentOrder = JSON.parse(localStorage.getItem('checkoutData'));
+
+            if(currentOrder) {
+                const today = new Date();
+                const dateString = today.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' });
+
+                const newHistory = {
+                    name: currentOrder.name,
+                    variant: currentOrder.variant,
+                    date: "Dipesan: " + dateString,
+                    status: statusPesanan, // Status dinamis (Diproses / Dibatalkan)
+                    image: currentOrder.image
+                };
+
+                let historyList = JSON.parse(localStorage.getItem('orderHistory')) || [];
+                historyList.unshift(newHistory);
+                localStorage.setItem('orderHistory', JSON.stringify(historyList));
+                localStorage.removeItem('checkoutData');
+            }
+        }
+    </script>
+
+</body>
+</html>
